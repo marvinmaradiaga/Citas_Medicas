@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.Citas", "Win.Citas\Win.Citas.csproj", "{61887761-2304-4377-B463-38098F628EAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Win.CitasMedicas", "Win.CitasMedicas\Win.CitasMedicas.csproj", "{C1F07808-D912-4AE5-93FF-A9F2713B332A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL.Citas", "BL.Citas\BL.Citas.csproj", "{990BFCAA-93A6-4108-868D-E9419879359A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{61887761-2304-4377-B463-38098F628EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{61887761-2304-4377-B463-38098F628EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{61887761-2304-4377-B463-38098F628EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{61887761-2304-4377-B463-38098F628EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F07808-D912-4AE5-93FF-A9F2713B332A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F07808-D912-4AE5-93FF-A9F2713B332A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F07808-D912-4AE5-93FF-A9F2713B332A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F07808-D912-4AE5-93FF-A9F2713B332A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{990BFCAA-93A6-4108-868D-E9419879359A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{990BFCAA-93A6-4108-868D-E9419879359A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{990BFCAA-93A6-4108-868D-E9419879359A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{990BFCAA-93A6-4108-868D-E9419879359A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
