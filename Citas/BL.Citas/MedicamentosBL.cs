@@ -57,6 +57,69 @@ namespace BL.Citas
         {
             return ListaMedicamentos;
         }
+
+         // Creando la clase Guardar medicamentos.
+
+        public Resultado GardarMedicamentos(Medicamento medicamento)
+        {
+            var resultado = Validar(medicamento);
+            if(resultado.Exitoso == false)
+            {
+                return resultado;
+            }
+
+            if (medicamento.Id == 0 )
+            {
+                medicamento.Id = ListaMedicamentos.Max(item => item.Id) + 1;
+            }
+            resultado.Exitoso = true;
+            return resultado;
+        }
+
+        public void AgregarMedicamento()
+        {
+            var nuevoMedicamento = new Medicamento();
+            ListaMedicamentos.Add(nuevoMedicamento);
+        }
+
+        // Creando la clase Eliminar.
+        public bool EliminarMedicamento(int id)
+        {
+            foreach (var medicamento in ListaMedicamentos)
+            {
+                if (medicamento.Id == id)
+                {
+                    ListaMedicamentos.Remove(medicamento);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        // Validando
+        private Resultado Validar (Medicamento medicamento)
+        {
+            var resultado = new Resultado();
+            resultado.Exitoso = true;
+
+            if(string.IsNullOrEmpty(medicamento.Descripcion) == true)
+            {
+                resultado.Mensaje = "Ingrese una descripcion";
+                resultado.Exitoso = false;
+            }
+
+            if (medicamento.Existencia < 0 )
+            {
+                resultado.Mensaje = "La exixtencia debe ser mayor que 0";
+                resultado.Exitoso = false;
+            }
+            if (medicamento.Precio < 0)
+            {
+                resultado.Mensaje = "El precio debe ser mayor que 0";
+                resultado.Exitoso = false;
+            }
+            return resultado;
+        }
     }
 
     public  class Medicamento
@@ -67,4 +130,10 @@ namespace BL.Citas
         public int Existencia { get; set; }
         public bool Activo { get; set; }
     }  
+
+    public class Resultado
+    {
+        public bool Exitoso { get; set; }
+        public string Mensaje { get; set; }
+    }
 }

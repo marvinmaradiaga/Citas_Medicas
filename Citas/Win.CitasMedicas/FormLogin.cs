@@ -61,5 +61,24 @@ namespace Win.CitasMedicas
         {
             Application.Exit();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Minimized;
+
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+
+            }
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
