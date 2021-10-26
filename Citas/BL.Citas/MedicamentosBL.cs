@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,56 +10,24 @@ namespace BL.Citas
 {
     public class MedicamentosBL
     {
+        Contexto _contexto;
         public BindingList<Medicamento> ListaMedicamentos { get; set; }
         /*Añadiendo la Lista de Medicamentos*/
         public MedicamentosBL()
         {
+            _contexto = new Contexto();
             ListaMedicamentos = new BindingList<Medicamento>();
 
-            var medicamento1 = new Medicamento();
-            medicamento1.Id = 1;
-            medicamento1.Descripcion = "Panadol Ultra";
-            medicamento1.Precio = 15;
-            medicamento1.Existencia = 100;
-            medicamento1.Activo = true;
-
-            ListaMedicamentos.Add(medicamento1);
-
-
-            var medicamento2 = new Medicamento();
-            medicamento2.Id = 2;
-            medicamento2.Descripcion = "Aspirinas";
-            medicamento2.Precio = 20;
-            medicamento2.Existencia = 33;
-            medicamento2.Activo = true;
-
-            ListaMedicamentos.Add(medicamento2);
-
-            var medicamento3 = new Medicamento();
-            medicamento3.Id = 3;
-            medicamento3.Descripcion = "IMMUVIT vitaminas";
-            medicamento3.Precio = 350;
-            medicamento3.Existencia = 65;
-            medicamento3.Activo = true;
-
-            ListaMedicamentos.Add(medicamento3);
-
-            var medicamento4 = new Medicamento();
-            medicamento4.Id = 4;
-            medicamento4.Descripcion = "Ibuprofeno";
-            medicamento4.Precio = 5;
-            medicamento4.Existencia = 100;
-            medicamento4.Activo = true;
-
-            ListaMedicamentos.Add(medicamento4);
         }
 
         public BindingList<Medicamento> ObtenerMedicamentos()
         {
+            _contexto.Medicamentos.Load();
+            ListaMedicamentos = _contexto.Medicamentos.Local.ToBindingList();
             return ListaMedicamentos;
         }
 
-         // Creando la clase Guardar medicamentos.
+         // Creando la Funcion Guardar medicamentos.
 
         public Resultado GardarMedicamentos(Medicamento medicamento)
         {
@@ -68,21 +37,19 @@ namespace BL.Citas
                 return resultado;
             }
 
-            if (medicamento.Id == 0 )
-            {
-                medicamento.Id = ListaMedicamentos.Max(item => item.Id) + 1;
-            }
+            _contexto.SaveChanges();
+
             resultado.Exitoso = true;
             return resultado;
         }
-
+        // Creando la funcion agregar
         public void AgregarMedicamento()
         {
             var nuevoMedicamento = new Medicamento();
             ListaMedicamentos.Add(nuevoMedicamento);
         }
 
-        // Creando la clase Eliminar.
+        // Creando la funcion Eliminar.
         public bool EliminarMedicamento(int id)
         {
             foreach (var medicamento in ListaMedicamentos)
@@ -90,6 +57,7 @@ namespace BL.Citas
                 if (medicamento.Id == id)
                 {
                     ListaMedicamentos.Remove(medicamento);
+                    _contexto.SaveChanges();
                     return true;
                 }
             }
@@ -108,12 +76,12 @@ namespace BL.Citas
                 resultado.Exitoso = false;
             }
 
-            if (medicamento.Existencia < 0 )
+            if (medicamento.Existencia <= 0 )
             {
-                resultado.Mensaje = "La exixtencia debe ser mayor que 0";
+                resultado.Mensaje = "La existencia debe ser mayor que 0";
                 resultado.Exitoso = false;
             }
-            if (medicamento.Precio < 0)
+            if (medicamento.Precio <= 0)
             {
                 resultado.Mensaje = "El precio debe ser mayor que 0";
                 resultado.Exitoso = false;

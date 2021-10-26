@@ -37,6 +37,7 @@ namespace Win.CitasMedicas
             {
                 listaMedicamentosBindingSource.ResetBindings(false);
                 DeshabilitarHabilitarBotones(true);
+                MessageBox.Show("Medicamento Guardado");
             }
             else
             {
