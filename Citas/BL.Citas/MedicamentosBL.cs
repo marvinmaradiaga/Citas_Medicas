@@ -27,7 +27,17 @@ namespace BL.Citas
             return ListaMedicamentos;
         }
 
-         // Creando la Funcion Guardar medicamentos.
+        // Agregando nuevo metodo para cancelar.
+        public void CancelarCambios()
+        {
+            foreach (var item in _contexto.ChangeTracker.Entries())
+            {
+                item.State = EntityState.Unchanged;
+                item.Reload();
+            }
+        }
+
+        // Creando la Funcion Guardar medicamentos.
 
         public Resultado GardarMedicamentos(Medicamento medicamento)
         {
@@ -86,6 +96,20 @@ namespace BL.Citas
                 resultado.Mensaje = "El precio debe ser mayor que 0";
                 resultado.Exitoso = false;
             }
+
+            //VALIDACION PARA LA PROPIEDAD TIPO
+            if (medicamento.TipoId == 0)
+            {
+                resultado.Mensaje = "Seleccione una tipo.";
+                resultado.Exitoso = false;
+            }
+            
+            //VALIDACION PARA LA PROPIEDAD CATEGORIA
+            if (medicamento.CategoriaId == 0)
+            {
+                resultado.Mensaje = "Seleccione una categoria.";
+                resultado.Exitoso = false;
+            }
             return resultado;
         }
     }
@@ -96,6 +120,11 @@ namespace BL.Citas
         public string Descripcion { get; set; }
         public double Precio { get; set; }
         public int Existencia { get; set; }
+        public byte[] Foto { get; set; }
+        public int CategoriaId { get; set; }
+        public Categoria Categoria { get; set; }
+        public int TipoId { get; set; }
+        public Tipo Tipo { get; set; }
         public bool Activo { get; set; }
     }  
 
