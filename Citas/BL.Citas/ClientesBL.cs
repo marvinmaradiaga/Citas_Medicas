@@ -77,6 +77,15 @@ namespace BL.Citas
             var resultado = new Resultado();
             resultado.Exitoso = true;
 
+            // Agregando anulacion de factura.//
+            if (cliente == null)
+            {
+                resultado.Mensaje = "Ingrese un cliente valido.";
+                resultado.Exitoso = false;
+
+                return resultado;
+            }
+
             if (cliente == null)
             {
                 resultado.Mensaje = "Agregue un cliente valido";

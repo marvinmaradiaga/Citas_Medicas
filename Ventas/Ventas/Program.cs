@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Win.CitasMedicas
+namespace Ventas
 {
     static class Program
     {
@@ -18,16 +16,7 @@ namespace Win.CitasMedicas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMenu());
-        }
-
-        //Convierte la imagen a un arreglo de bytes.    
-        public static byte[] imageToByteArray(Image imageIn)
-        {
-            MemoryStream ms = new MemoryStream();
-            imageIn.Save(ms, imageIn.RawFormat);
-
-            return ms.ToArray();
+            Application.Run(new Form1());
         }
     }
 }

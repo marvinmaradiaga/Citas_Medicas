@@ -80,6 +80,15 @@ namespace BL.Citas
             var resultado = new Resultado();
             resultado.Exitoso = true;
 
+            // Agregando anulacion de factura.//
+            if (medicamento == null)
+            {
+                resultado.Mensaje = "Ingrese un medicamento valido.";
+                resultado.Exitoso = false;
+
+                return resultado;
+            }
+
             if(string.IsNullOrEmpty(medicamento.Descripcion) == true)
             {
                 resultado.Mensaje = "Ingrese una descripcion";

@@ -84,6 +84,12 @@
     <Compile Include="FormClientes.Designer.cs">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormFactura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFactura.Designer.cs">
+      <DependentUpon>FormFactura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMedicamentos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     <EmbeddedResource Include="FormClientes.resx">
       <DependentUpon>FormClientes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFactura.resx">
+      <DependentUpon>FormFactura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMedicamentos.resx">
       <DependentUpon>FormMedicamentos.cs</DependentUpon>
     </EmbeddedResource>
@@ -137,6 +146,7 @@
     <None Include="Properties\DataSources\BL.Citas.CategoriasBL.datasource" />
     <None Include="Properties\DataSources\BL.Citas.Cliente.datasource" />
     <None Include="Properties\DataSources\BL.Citas.ClientesBL.datasource" />
+    <None Include="Properties\DataSources\BL.Citas.FacturaBL.datasource" />
     <None Include="Properties\DataSources\BL.Citas.Medicamento.datasource" />
     <None Include="Properties\DataSources\BL.Citas.MedicamentosBL.datasource" />
     <None Include="Properties\DataSources\BL.Citas.SeguridadBL.datasource" />
