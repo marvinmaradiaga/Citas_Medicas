@@ -10,7 +10,12 @@ namespace BL.Citas
 {
     public class Contexto:DbContext
     {
-        public Contexto(): base("Medicinas.")
+        /*public Contexto() : base("Medicinas.")
+        {
+
+        }*/
+
+        public Contexto() : base("Server=.;Database=PruebaDB;Trusted_Connection=True;")
         {
 
         }

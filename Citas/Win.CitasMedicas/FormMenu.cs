@@ -98,5 +98,24 @@ namespace Win.CitasMedicas
             formFactura.MdiParent = this;
             formFactura.Show();
         }
+
+        private void seguridadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void reporteDeMedicamentosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteMedicamentos = new FormReporteMedicamentos();
+            formReporteMedicamentos.MdiParent = this;
+            formReporteMedicamentos.Show();
+        }
+
+        private void reporteDeFacturasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var formReporteFacturas = new FormReporteFacturas();
+            formReporteFacturas.MdiParent = this;
+            formReporteFacturas.Show();
+        }
     }
 }
